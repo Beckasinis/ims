@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware 
-app.use(express.json());
+app.use(express.json()); // Important to be able to read JSON-body
 
 //Routes
 app.use('/products', productRoutes);
@@ -20,15 +20,7 @@ app.use('/products', productRoutes);
 //Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'Lagerhantering Hundartiklar',
-    endpoints: {
-      getAllProducts: 'GET /products',
-      getProduct: 'GET /products/:id',
-      createProduct: 'POST /products',
-      updateProduct: 'PUT /products/:id',
-      deleteProduct: 'DELETE /products/:id'
-    }
-  });
+    message: 'Lagerhantering Hundartiklar' });
 });
 
 //404 handler
@@ -37,5 +29,5 @@ app.use((req,res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('Server körs på http://localhost:${PORT}');
+  console.log(`Server körs på http://localhost:${PORT}`);
 });

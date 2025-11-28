@@ -67,7 +67,7 @@ router.post('/', async (req, res) => {
     // Validate strings
     if (!validateString(name) || !validateString(category)) {
       res.status(400).json({
-        error: "Name and category must be non-empty strings"
+        error: "Name and category can't be empty and must have text"
       });
       return 
     }
@@ -114,7 +114,7 @@ router.put('/:id', async (req, res) => {
     // Validate strings
     if (!validateString(name) || !validateString(category)) {
       res.status(400).json({
-        error: "Name and category must be non-empty strings"
+        error: "Name and category can't be empty and must have text"
       });
       return 
     }
@@ -122,7 +122,7 @@ router.put('/:id', async (req, res) => {
     // Validate numbers
     if (!validateNumber(quantity) || !validateNumber(price) || quantity < 0 || price < 0) {
       res.status(400).json({
-        error: "Quantity and price must be valid numbers"
+        error: "Quantity and price must be valid and positive numbers"
       });
       return 
     }
@@ -148,19 +148,23 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
+
     if (!Number.isInteger(id)) {
       res.status(400).json({ error: "Invalid product id" });
       return;
     }
-    
-    const existing = await getProduct(id);
-    if (!existing) {
+    //Get product before deleted
+    const product = await getProduct(id);
+    if (!product) {
       res.status(404).json({ error: "Product not found" });
       return
     }
-
+    //Delete product
     await deleteProduct(id);
-    res.status(200).json({ message: "Product successfully deleted" });
+    
+    //Response with product info
+    res.status(200).json({ message: "Product successfully deleted",deletedProduct: product });
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Could not delete product" });

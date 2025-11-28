@@ -1,0 +1,25 @@
+meta {
+  name: Create new product
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/products
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Toothbrush",
+    "quantity": 25,
+    "price": 39.90,
+    "category": "health"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

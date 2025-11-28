@@ -1,0 +1,25 @@
+meta {
+  name: Update product
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3000/products/3
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Hundkoppel Nylon 180cm",
+    "quantity": 65,
+    "price": 79.90,
+    "category": "Tillbehör"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

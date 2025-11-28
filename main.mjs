@@ -1,10 +1,9 @@
 /*
-Webbaserat lagerhanteringssystem - Inventory Management System (IMS)
-där användare kan hantera produkter i ett lager av hundartiklar
+Webbased Inventory Management System (IMS)
+where user can handle products in an inventory of dog supplies
 */
 import express from 'express';
 import dotenv from 'dotenv';
-import pool from './db.mjs';
 import productRoutes from './routes/products.mjs';
 
 dotenv.config();

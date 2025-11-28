@@ -1,9 +1,14 @@
 //databaskoppling
-
+import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
+import productsRouter from "./routes/products.mjs";
 
 dotenv.config();
+
+const app = express();
+app.use(express.json()); // Viktigt för att kunna läsa JSON-body
+app.use("/products", productsRouter);
 
 const { Pool } = pkg;
 
@@ -15,11 +20,15 @@ const pool = new Pool({
   port: process.env.DATABASE_PORT,
 });
 
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 //Testa databasen
 pool.query('SELECT NOW()', (err,res ) => {
   if (err) {
-    console.error('Databasanslutning misslyckades:',err);
+    console.log('Databasanslutning misslyckades:',err);
   } else {
     console.log('Ansluten till PostgreSQL:', res.rows[0].now);
   }

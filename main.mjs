@@ -15,11 +15,10 @@ import productRoutes from './routes/products.mjs';
 
 dotenv.config();
 
-const app = express ();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware som gör att vi kan läsa JSON-data från request body
-// Utan denna kan vi inte ta emot data från klienten
+// Middleware 
 app.use(express.json());
 
 //Routes
@@ -33,7 +32,7 @@ app.get('/', (req, res) => {
       getAllProducts: 'GET /products',
       getProduct: 'GET /products/:id',
       createProduct: 'POST /products',
-      updateProduct: 'PUT /products/:id'
+      updateProduct: 'PUT /products/:id',
       deleteProduct: 'DELETE /products/:id'
     }
   });

@@ -5,12 +5,12 @@ import { getAllProducts, getProduct, createProduct, updateProduct, deleteProduct
 const router = express.Router();
 
 /*
-APIet ska hantera följande endpoints:
-- GET /products       - för att hämta alla produkter
-- GET /products/:id   - för att hämta en specifik produkt
-- POST /products      - för att skapa en ny produkt
-- PUT /products/:id   - för att uppdatera en befintlig produkt
-- DELETE /product/:id - för att ta bort en produkt
+APIet must handle these endpoints:
+- GET /products       - to get all products
+- GET /products/:id   - to get one specific product
+- POST /products      - to create a new product
+- PUT /products/:id   - to update a product
+- DELETE /product/:id - to delete a product
 */
 
 // GET /products - Get all products
@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
     return;
     }
 
-    // 200 OK
+    // If found, 200 OK
     res.status(200).json(product);
     return;
 
@@ -144,7 +144,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE /products/:id - Ta bort produkt
+// DELETE /products/:id - Delete product
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);

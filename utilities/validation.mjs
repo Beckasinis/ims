@@ -1,4 +1,4 @@
-//Valideringsfunktioner
+//Validation functions
 export function validateString(value) {
   return typeof value === "string" && value.trim().length > 0;
 }

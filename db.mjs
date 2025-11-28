@@ -1,4 +1,4 @@
-//databaskoppling
+// Database connection
 import express from 'express';
 import pkg from 'pg';
 import dotenv from 'dotenv';
@@ -7,7 +7,7 @@ import productsRouter from "./routes/products.mjs";
 dotenv.config();
 
 const app = express();
-app.use(express.json()); // Viktigt för att kunna läsa JSON-body
+app.use(express.json()); // Important to be able to read JSON-body
 app.use("/products", productsRouter);
 
 const { Pool } = pkg;
@@ -25,7 +25,7 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-//Testa databasen
+//Check database
 pool.query('SELECT NOW()', (err,res ) => {
   if (err) {
     console.log('Databasanslutning misslyckades:',err);

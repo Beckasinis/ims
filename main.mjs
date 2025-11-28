@@ -1,12 +1,6 @@
 /*
 Webbaserat lagerhanteringssystem - Inventory Management System (IMS)
-där användare kan hantera produkter i ett lager
-
-Produkter ska minst bestå av:
-- Namn
-- Antal (i lager)
-- Pris
-- Kategori (sträng)
+där användare kan hantera produkter i ett lager av hundartiklar
 */
 import express from 'express';
 import dotenv from 'dotenv';

@@ -16,9 +16,9 @@ const pool = new Pool({
 //Check database
 pool.query('SELECT NOW()', (err,res ) => {
   if (err) {
-    console.log('Databasanslutning misslyckades:',err);
+    console.log('Databaseconnection failed:',err);
   } else {
-    console.log('Ansluten till PostgreSQL:', res.rows[0].now);
+    console.log('Connected to PostgreSQL:', res.rows[0].now);
   }
 });
 

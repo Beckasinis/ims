@@ -4,15 +4,6 @@ import { getAllProducts, getProduct, createProduct, updateProduct, deleteProduct
 
 const router = express.Router();
 
-/*
-APIet must handle these endpoints:
-- GET /products       - to get all products
-- GET /products/:id   - to get one specific product
-- POST /products      - to create a new product
-- PUT /products/:id   - to update a product
-- DELETE /product/:id - to delete a product
-*/
-
 // GET /products - Get all products
 router.get('/', async (req, res) => {
   try {
